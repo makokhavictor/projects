@@ -4,13 +4,17 @@
 // Option 2
 
 (function(){
-	var wendani = angular.module('main',['ngRoute','ngAnimate','ngMessages','ngTable','ui.bootstrap.datetimepicker','angularFileUpload','ngDialog']);
+	var app = angular.module('main',['ngRoute','ngAnimate','ngTable']);
 
-	wendani.config(function($routeProvider){
+	app.config(function($routeProvider){
 		$routeProvider
 			.when('/',{
 				controller:'SiteController',
 				templateUrl:'app/views/site/home.html'
+			})
+			.when('/repos',{
+				controller:'SiteController',
+				templateUrl:'app/views/site/repos.html'
 			})
 			
 			.otherwise({redirectTo:'/'});

@@ -1,1 +1,36 @@
-Welcome to {{appSettings.APP_NAME}}
+<div class="container">
+	<form  class="form">
+		<div class="form-group col-md-6">
+			<label for="">GitHub Username</label>
+			<input type="text" class="form-control" ng-model="username">
+		</div>
+		<div class="form-group col-md-12">
+			<button class="btn-sm btn-success" ng-click="getUserData(username)">Get User Data</button>
+		</div>
+	</form>
+
+	<div class="col-md-12" ng-show="userData">
+		<div class="row">
+			<h1 class="">
+			   Repos for {{userData.login}}
+			</h1>
+		</div>
+		<div class="row">
+			<table class="table table-compact table-striped">
+				<thead>
+					<th>Name</th>
+					<th>Url</th>
+					<th>Description</th>
+				</thead>
+				<tbody>
+					<tr ng-repeat="repo in repoData">
+						<td>{{repo.name}}</td>
+						<td>{{repo.html_url}}</td>
+						<td>{{repo.descriptions}}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		
+	</div>
+</div>
