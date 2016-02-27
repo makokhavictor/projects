@@ -1,5 +1,5 @@
 (function(){
-	var SiteController = function($scope,$log,$http,appSettings,$routeParams){
+	var SiteController = function($scope,$log,$http,appSettings,$routeParams,NgTableParams){
 		$scope.appSettings = appSettings;
 		$scope.githuburl = appSettings.GITHUB_USERS_URL;
 		$scope.userData = false;
@@ -11,24 +11,18 @@
 				if(status == 200){
 			     $scope.userData = data;
 			     $http.get($scope.userData.repos_url)
-				    .success(function(data){
-				        $scope.repoData = data;
+				    .success(function(_data){
+				        $scope.tableParams = new NgTableParams({}, {filterDelay: 0, dataset: _data});
 				    });
 				}else{
 			     $scope.userData = false;
 				}
 			});
 		};
-		$scope.getRepos = function(){
-			$scope.repos_url = $scope.userData.repos_url;
-			// $http.get(repos_url)
-		 //    .success(function(data){
-		 //        $scope.repoData = data;
-		 //    });
-		}
+		
 		
 	};
-	SiteController.$inject  = ['$scope','$log','$http','appSettings','$routeParams'];
+	SiteController.$inject  = ['$scope','$log','$http','appSettings','$routeParams','NgTableParams'];
 	angular.module('main')
   .controller('SiteController',SiteController); 
 }());
