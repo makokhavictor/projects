@@ -25,7 +25,7 @@
 			var url = "https://api.github.com/repos/"+repo.full_name+"/issues/";
 			$http.get(url)
 		    .success(function(_data){
-		    	$log.log(_data);
+		    	$scope.issue_count = _data.length;
 		    });
 		}
 		
