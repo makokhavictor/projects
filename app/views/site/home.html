@@ -19,12 +19,12 @@
 			
 
 		<div class="table-responsive">
-			<table ng-table="tableParams" class="table" show-filter="true">
+			<!-- <table ng-table="tableParams" class="table" show-filter="true">
 			    <tr ng-repeat="repo in $data" class="scale-fade-in">
 			        <td title="'Name'" filter="{ name: 'text'}" sortable="'name'">
-			            {{repo.name}}</td>
-			        <td title="'Url'" filter="{ html_url: 'text'}" sortable="'html_url'">
-			            {{repo.html_url}}</td>
+			           
+			            <a href="{{repo.html_url}}"> {{repo.name}}</a>
+			            </td>
 		            <td title="'Description'" filter="{ description: 'text'}" sortable="'description'">
 		            	{{repo.description}}</td>
 	            	<td title="'Home Page'" filter="{ homepage: 'text'}" sortable="'homepage'">
@@ -34,7 +34,14 @@
 	            	<td title="'Updated At'" filter="{ updated_at: 'text'}" sortable="'updated_at'">
 	            	{{repo.created_at| date : short : timezone}}</td>
 			    </tr>
-			</table>
+			</table> -->
+			<ul>
+				<li ng-repeat="repo in repoData">
+					<a href="javascript:;">{{repo.name}} 
+						<span ng-init="getIssuesCount(repo)" class="badge">2</span>
+					</a>
+				</li>
+			</ul>
 		</div>
 		
 	</div>

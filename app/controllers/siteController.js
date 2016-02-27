@@ -12,6 +12,7 @@
 			     $scope.userData = data;
 			     $http.get($scope.userData.repos_url)
 				    .success(function(_data){
+				    	$scope.repoData = _data;
 				        $scope.tableParams = new NgTableParams({}, {filterDelay: 0, dataset: _data});
 				    });
 				}else{
@@ -19,6 +20,14 @@
 				}
 			});
 		};
+
+		$scope.getIssuesCount = function(repo){
+			var url = "https://api.github.com/repos/"+repo.full_name+"/issues/";
+			$http.get(url)
+		    .success(function(_data){
+		    	$log.log(_data);
+		    });
+		}
 		
 		
 	};
